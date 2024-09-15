@@ -96,29 +96,41 @@
 
     <script>
          const grids = document.querySelector(".wrapper");
-        
-        const toggleColumn = () => {
-           
-            grids.classList.toggle('collapsed');
-            
-            
-           
-        };
-      
+       
+       
 
         window.addEventListener("keydown", (e) => {
             if (e.key === "ArrowRight") {
-                toggleColumn();
+                grids.classList.add('collapsed');
             }
             else if (e.key === "ArrowLeft") {
-                toggleColumn();
+                grids.classList.remove('collapsed');
+            }
+            if (e.key === "ArrowUp" && grids.classList.contains('collapsed_up')) {
+                console.log("object")
+                grids.classList.remove('collapsed_up');
+                grids.classList.remove('collapsed_Down');
+              
+              
             }
             else if (e.key === "ArrowUp") {
-                grids.classList.toggle('collapsed_up');
+                grids.classList.add('collapsed_Down');
+                    grids.classList.remove('collapsed_up');
+                
+               
+            }
+            else if (e.key === "ArrowDown" && grids.classList.contains('collapsed_Down')) {
+                grids.classList.remove('collapsed_Down');
+                    // grids.classList.remove('collapsed_up');
+                
+               
             }
             else if (e.key === "ArrowDown") {
-                grids.classList.toggle('collapsed_Down');
+                grids.classList.add('collapsed_up');
+                grids.classList.remove('collapsed_Down');
+              
             }
+            
            
         });
     </script>
