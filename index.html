@@ -30,6 +30,12 @@
         .collapsed {
             grid-template-columns: 2fr 0fr; /* Collapse right column */
         }
+        .collapsed_up{
+            grid-template-rows: 1fr 0fr;
+        }
+        .collapsed_Down{
+            grid-template-rows: 0fr 1fr;
+        }
 
         .container-left {
             grid-column: 1;
@@ -40,6 +46,7 @@
             border: 3px double gray;
             /* background: #333; */
             padding: 15px;
+          
         }
 
         .box-right-1, .box-right-2 {
@@ -60,9 +67,7 @@
             grid-column: 2;
             grid-row: 2;
         }
-.remov{
-    grid-column: 1;
-}
+
         @media screen and (max-width: 600px) {
             .wrapper {
                 grid-template-columns: 1fr;
@@ -90,19 +95,31 @@
     </div>
 
     <script>
+         const grids = document.querySelector(".wrapper");
+        
         const toggleColumn = () => {
-            const grids = document.querySelector(".wrapper");
-            const x_1 = document.querySelector(".box-right-1");
-            const x_2 = document.querySelector(".box-right-2");
+           
             grids.classList.toggle('collapsed');
-            // x_1.classList.toggle('remov');
-            // x_2.classList.toggle('remov');
+            
+            
+           
         };
+      
 
         window.addEventListener("keydown", (e) => {
             if (e.key === "ArrowRight") {
                 toggleColumn();
             }
+            else if (e.key === "ArrowLeft") {
+                toggleColumn();
+            }
+            else if (e.key === "ArrowUp") {
+                grids.classList.toggle('collapsed_up');
+            }
+            else if (e.key === "ArrowDown") {
+                grids.classList.toggle('collapsed_Down');
+            }
+           
         });
     </script>
 </body>
