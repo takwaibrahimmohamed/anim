@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equal Column Grid Layout</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui;
+            font-size: 20px;
+            height: 80vh;
+            margin: 20px;
+        }
+
+        .wrapper {
+            display: grid;
+            width: 100%;
+            height: 100%;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            transition: grid-template-columns 0.5s ease;
+            gap: 1rem;
+          
+        }
+
+        .collapsed {
+            grid-template-columns: 2fr 0fr; /* Collapse right column */
+        }
+
+        .container-left {
+            grid-column: 1;
+            grid-row: 1 / span 2;
+            display: grid;
+            /* place-items: center; */
+            color: black;
+            border: 3px double gray;
+            /* background: #333; */
+            padding: 15px;
+        }
+
+        .box-right-1, .box-right-2 {
+            display: grid;
+            /* place-items: center; */
+            color: black;
+            border: 3px double gray;
+            /* background: #555; */
+            padding: 15px;
+        }
+
+        .box-right-1 {
+            grid-column: 2;
+            grid-row: 1;
+        }
+
+        .box-right-2 {
+            grid-column: 2;
+            grid-row: 2;
+        }
+.remov{
+    grid-column: 1;
+}
+        @media screen and (max-width: 600px) {
+            .wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="container-left">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat sapiente cupiditate illo obcaecati unde cumque veniam exercitationem expedita ad aut odit beatae nihil assumenda enim nisi mollitia ducimus, totam dolores!
+            <br/>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat sapiente cupiditate illo obcaecati unde cumque veniam exercitationem expedita ad aut odit beatae nihil assumenda enim nisi mollitia ducimus, totam dolores!
+            <br/>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat sapiente cupiditate illo obcaecati unde cumque veniam exercitationem expedita ad aut odit beatae nihil assumenda enim nisi mollitia ducimus, totam dolores!
+            <br/>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat sapiente cupiditate illo obcaecati unde cumque veniam exercitationem expedita ad aut odit beatae nihil assumenda enim nisi mollitia ducimus, totam dolores!
+            <br/>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat sapiente cupiditate illo obcaecati unde cumque veniam exercitationem expedita ad aut odit beatae nihil assumenda enim nisi mollitia ducimus, totam dolores!
+            <br/>
+        </div>
+        <div class="box-right-1 x"> Box 1</div>
+        <div class="box-right-2 x"> Box 2</div>
+    </div>
+
+    <script>
+        const toggleColumn = () => {
+            const grids = document.querySelector(".wrapper");
+            const x_1 = document.querySelector(".box-right-1");
+            const x_2 = document.querySelector(".box-right-2");
+            grids.classList.toggle('collapsed');
+            // x_1.classList.toggle('remov');
+            // x_2.classList.toggle('remov');
+        };
+
+        window.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowRight") {
+                toggleColumn();
+            }
+        });
+    </script>
+</body>
+</html>
